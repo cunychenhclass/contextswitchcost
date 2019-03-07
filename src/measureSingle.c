@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
         free(f);
         sleep(1);
     }
-#ifdef __X86_64__
+#ifdef __x86_64__
     printf("\nmeasureSingle: "
            "array_size = %lu, stride = %lu, min time1 = %.15f\n", 
             array_size*sizeof(double), stride*sizeof(double), min1);

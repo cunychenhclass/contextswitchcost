@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
         }
 	sleep(1);
     }
-#ifdef __X86_64__
+#ifdef __x86_64__
     printf("\nmeasureSwitch: "
            "array_size = %lu, stride = %lu, min time2 = %.15f\n", 
 	       array_size*sizeof(double), stride*sizeof(double), min2);
