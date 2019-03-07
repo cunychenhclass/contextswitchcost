@@ -69,7 +69,7 @@ void measureSwitch2(register int array_size, register int stride,
 
 int main(int argc, char *argv[])
 {
-    int i, j, len, ret, p1[2], p2[2], stride=0, array_size=0;
+    int len, ret, p1[2], p2[2], stride=0, array_size=0;
     double *f, start_time, time1, min2=LARGE;
     char message, ch;
     short round;
@@ -171,8 +171,15 @@ int main(int argc, char *argv[])
         }
 	sleep(1);
     }
-    printf("\nmeasureSwitch: array_size = %lu, stride = %lu, min time2 = %.15f\n", 
-	array_size*sizeof(double), stride*sizeof(double), min2);
+#ifdef __X86_64__
+    printf("\nmeasureSwitch: "
+           "array_size = %lu, stride = %lu, min time2 = %.15f\n", 
+	       array_size*sizeof(double), stride*sizeof(double), min2);
+#else
+    printf("\nmeasureSwitch: "
+           "array_size = %u, stride = %u, min time2 = %.15f\n", 
+	       array_size*sizeof(double), stride*sizeof(double), min2);
+#endif
     return 0;
 }
 
