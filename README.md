@@ -30,8 +30,11 @@ system on which one processor is employed for context switch measurement while t
 0. What are in the directory:
 
     measureSwitch.c -- two processes communication via a pipe
+
     measureSingle.c -- single process simulating two processes communications
+
     util.c -- utility program for context switch cost measurement
+
     util.h -- utility header file
 
 1. Compile:
@@ -41,6 +44,7 @@ system on which one processor is employed for context switch measurement while t
 2. Usage:
 
     ./measureSingle [-n ArraySize] [-s StrideSize]
+
     ./measureSwitch [-n ArraySize] [-s StrideSize]
 
     2.1 By default, ArraySize and StrideSize are both zeros.
@@ -52,9 +56,11 @@ system on which one processor is employed for context switch measurement while t
 3. Output:
 
     measureSingle outputs time1
+
         time1 = Overhead of traversing through array + pipe overhead
 
     measureSwitch outputs time2
+
         time2 = time1 + context switch overhead
 
     total cost of context switch    = time2 - time1 (microseconds)
