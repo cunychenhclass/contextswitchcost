@@ -13,6 +13,7 @@
 #include <fcntl.h>
 #include "util.h"
 
+#if defined USE_ORIGINAL_TIME_UTIL
 /* get the elapsed time (in seconds) since startup */
 double gethrtime_x86(void)
 {
@@ -20,6 +21,7 @@ double gethrtime_x86(void)
     if (CPU_MHZ==0) CPU_MHZ=getMHZ_x86();
     return (gethrcycle_x86()*0.000001)/CPU_MHZ;
 }
+#endif
 
 /* get the number of CPU cycles since startup */
 hrtime_t gethrcycle_x86(void)

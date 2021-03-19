@@ -27,6 +27,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "util.h"
+#include "timeutil.h"
 
 void showUsage()
 {
@@ -78,7 +79,7 @@ int main(int argc, char *argv[])
     cpu_set_t new_mask;
 
     CPU_ZERO(&new_mask);   /* Initialize it all to 0, i.e. no CPUs selected. */
-    CPU_SET(2, &new_mask);  /* set the bit that represents an appropriate core */
+    CPU_SET(1, &new_mask); /* set the bit that represents an appropriate core */
 
     len = sizeof(new_mask);
 #ifdef MULTIPROCESSOR
@@ -163,7 +164,7 @@ int main(int argc, char *argv[])
 	    time1 = time1/(2*LOOP)*MILLION;
             if(min2 > time1)
                 min2 = time1;
-            printf("%f\t", time1);
+            printf("%f us\t", time1);
             fflush(stdout);
             waitpid(pid, NULL, 0);
             memdump(f, sizeof(double)*array_size);

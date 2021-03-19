@@ -12,8 +12,10 @@
 
 typedef long long hrtime_t;
 
+#if defined USE_ORIGINAL_TIME_UTIL
 /* get the elapsed time (in seconds) since startup */
 double gethrtime_x86(void);
+#endif
 
 /* get the number of CPU cycles since startup */
 hrtime_t gethrcycle_x86(void);
